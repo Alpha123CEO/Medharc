@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — MEDHARC, LLC</title>
+  <meta name="description" content="Contact MEDHARC, LLC to request a demo, consultation, or proposal for ROI, audits, and compliance services." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.svg" alt="MEDHARC logo" class="logo" />
+        <span class="brand-text">MEDHARC, LLC</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html" aria-current="page" class="cta">Request a Demo</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container card contact-grid">
+      <div>
+        <h1>Contact MEDHARC</h1>
+        <p class="lead">Fill out the form below to request a demo, proposal, or ask questions about our services. We typically respond within one business day.</p>
+
+        <!-- Replace action with your Formspree endpoint or backend handler -->
+        <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/{your-form-id}">
+          <label>
+            Name
+            <input type="text" name="name" id="name" required />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" id="email" required />
+          </label>
+
+          <label>
+            Phone
+            <input type="tel" name="phone" id="phone" />
+          </label>
+
+          <label>
+            Organization
+            <input type="text" name="organization" id="organization" />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" id="message" rows="6" required></textarea>
+          </label>
+
+          <button type="submit" class="btn primary">Send Message</button>
+          <p id="formStatus" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <aside class="card contact-info">
+        <h3>Or reach us directly</h3>
+        <p><strong>Email:</strong> info@medharc.example</p>
+        <p><strong>Phone:</strong> (555) 555-0123</p>
+        <p><strong>Address:</strong> Optional — add your office address here</p>
+
+        <h4>Map</h4>
+        <p class="muted">Add a Google Maps iframe here or a static image if desired.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>MEDHARC, LLC</strong>
+        <p class="muted">Precision in every step, trust in every result</p>
+      </div>
+      <div class="footer-right">
+        <p class="muted">© <span id="year"></span> MEDHARC, LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
