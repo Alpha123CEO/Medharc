@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Careers — MEDHARC, LLC</title>
+  <meta name="description" content="Careers at MEDHARC — view open positions, learn about our culture, and apply for roles in healthcare compliance and auditing." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.svg" alt="MEDHARC logo" class="logo" />
+        <span class="brand-text">MEDHARC, LLC</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="careers.html" aria-current="page">Careers</a></li>
+          <li><a href="contact.html" class="cta">Request a Demo</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container card">
+      <h1>Careers at MEDHARC</h1>
+      <p class="lead">Join MEDHARC and help healthcare organizations improve compliance, recover revenue, and protect patient privacy. We hire people who are curious, meticulous, and committed to ethical practice.</p>
+
+      <h2>Open Positions</h2>
+
+      <div class="card">
+        <h3>Clinical Coding Auditor (Remote / Part-time)</h3>
+        <p>Responsibilities: review medical records, evaluate coding accuracy, prepare audit findings and recommendations.</p>
+        <ul>
+          <li>Requirements: 3+ years coding/audit experience, knowledge of ICD-10 & CPT, strong attention to detail</li>
+          <li>Location: Remote</li>
+          <li>Type: Part-time / Contract</li>
+        </ul>
+        <a class="btn outline" href="#apply-coding">Apply</a>
+      </div>
+
+      <div class="card">
+        <h3>Healthcare Compliance Analyst (Onsite/Hybrid)</h3>
+        <p>Responsibilities: conduct compliance assessments, prepare policy recommendations, support remediation plans.</p>
+        <ul>
+          <li>Requirements: experience with HIPAA and regulatory audits, strong written communication</li>
+          <li>Location: Hybrid (Chicago area preferred)</li>
+          <li>Type: Full-time</li>
+        </ul>
+        <a class="btn outline" href="#apply-analyst">Apply</a>
+      </div>
+
+      <h2 id="application">How to apply</h2>
+      <p>If you’re interested, please complete the short application form below and attach a resume link. We will review applications and reply within 7 business days.</p>
+
+      <!-- Placeholder form: replace action with your Formspree or backend endpoint -->
+      <form id="careersForm" class="form" method="POST" action="https://formspree.io/f/{your-form-id}">
+        <label>
+          Full name
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" required />
+        </label>
+
+        <label>
+          Phone
+          <input type="tel" name="phone" />
+        </label>
+
+        <label>
+          Position applying for
+          <select name="position" required>
+            <option value="Clinical Coding Auditor">Clinical Coding Auditor</option>
+            <option value="Healthcare Compliance Analyst">Healthcare Compliance Analyst</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+
+        <label>
+          Cover letter / brief message
+          <textarea name="message" rows="5"></textarea>
+        </label>
+
+        <label>
+          Resume (link)
+          <input type="url" name="resume_link" placeholder="Link to resume (Google Drive, Dropbox, etc.)" />
+        </label>
+
+        <p class="muted">Note: for direct file uploads we'd add server handling or Netlify functions; this form accepts a resume link to avoid handling uploads now.</p>
+
+        <button type="submit" class="btn primary">Submit Application</button>
+        <p id="careerFormStatus" class="form-status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>MEDHARC, LLC</strong>
+        <p class="muted">Precision in every step, trust in every result</p>
+      </div>
+      <div class="footer-right">
+        <p class="muted">© <span id="year"></span> MEDHARC, LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
