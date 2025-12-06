@@ -1,140 +1,64 @@
-/* ====== NEW HOMEPAGE SECTIONS ====== */
-
-/* HERO (Improved) */
-.hero {
-  background: linear-gradient(180deg, #dffdf8 0%, #ffffff 100%);
-  padding: 4rem 0 3rem;
-  text-align: center;
-}
-.hero h1 {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 0.75rem;
-}
-.hero p {
-  font-size: 1.1rem;
-  color: var(--muted);
-  margin-bottom: 1.3rem;
-}
-.hero .cta-btn {
-  background: var(--accent);
-  padding: 0.75rem 1.4rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  color: white;
-  display: inline-block;
-}
-.hero .cta-btn:hover {
-  background: var(--accent-600);
+/* ===========================
+   Global Styles
+=========================== */
+:root {
+  --primary: #0047ff;
+  --secondary: #111827;
+  --accent: #00d1b2;
+  --bg-light: #f9fafb;
+  --text-dark: #1f2937;
+  --font-main: "Inter", sans-serif;
 }
 
-/* WHO WE SERVE */
-.serve {
-  padding: 2.5rem 0;
-  text-align: center;
-}
-.serve h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.2rem;
-}
-.serve-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-}
-.serve .card {
-  background: var(--card);
-  padding: 1.25rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  font-weight: 600;
-  color: var(--text);
-}
-
-/* WHY CHOOSE US */
-.why-us {
-  padding: 2.5rem 0;
-}
-.why-us h2 {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 1.2rem;
-}
-.why-us ul {
-  max-width: 650px;
-  margin: 0 auto;
+* {
+  margin: 0;
   padding: 0;
-  list-style: none;
-}
-.why-us li {
-  background: var(--card);
-  padding: 0.9rem 1rem;
-  border-radius: var(--radius);
-  margin: 0.4rem 0;
-  box-shadow: var(--shadow);
-  color: var(--text);
+  box-sizing: border-box;
 }
 
-/* SERVICES PREVIEW */
-.services-preview {
-  padding: 2.5rem 0;
-  text-align: center;
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
 }
-.services-preview h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.2rem;
+
+/* ===========================
+   Header
+=========================== */
+header {
+  background: var(--primary);
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-}
-.service-card {
-  background: var(--card);
-  padding: 1.4rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  text-align: left;
-}
-.service-card h3 {
-  margin: 0 0 0.5rem;
-}
-.service-card p {
-  color: var(--muted);
-  font-size: 0.95rem;
-  margin-bottom: 0.8rem;
-}
-.service-card a {
-  font-weight: 600;
+
+/* ===========================
+   Buttons
+=========================== */
+.btn {
+  padding: 12px 24px;
+  border-radius: 6px;
+  background: var(--primary);
+  color: #fff;
   text-decoration: none;
-  color: var(--accent-600);
-}
-.service-card a:hover {
-  text-decoration: underline;
+  font-weight: 600;
+  transition: 0.3s ease;
 }
 
-/* ABOUT SECTION */
-.about-home {
-  padding: 2.5rem 0;
-  text-align: center;
-  max-width: 750px;
-  margin: 0 auto;
-}
-.about-home h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-.about-home p {
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.7;
+.btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
 }
 
-/* FOOTER ALIGN FIX (ADDS MORE SPACING) */
-footer {
-  margin-top: 3rem;
-  text-align: center;
-  padding-bottom: 1rem;
+/* ===========================
+   Responsive Layout
+=========================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
 }
