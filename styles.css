@@ -1,41 +1,29 @@
-/* ==========================================================
-    Consulting Authority Style - Production Ready CSS
-    Theme: Professional, Trustworthy, Data-Focused
-    Deployment Date: Dec 2025
-========================================================== */
-
-/* --------------------------------------
-    Global Variables (The Foundation)
--------------------------------------- */
+/* ======================================
+    Global Styles & Variables
+====================================== */
 :root {
-    /* Color Palette: Trust, Authority, Precision */
-    --color-authority-primary: #003366;    /* Deep Navy Blue (Primary Brand) */
-    --color-authority-secondary: #0099a1;  /* Rich Teal/Cyan (Accent/Action) */
-    --color-authority-accent: #f5a623;     /* Subtle Gold/Amber (Alerts/Highlights) */
-    
-    --color-background-white: #ffffff;
-    --color-background-light: #f7f9fb;     /* Very Light Off-White Base */
-    --color-background-muted: #e6e8eb;     /* Light Grey for subtle borders */
-
-    --color-text-dark: #212529;            /* Headings/Strong Contrast */
-    --color-text-body: #495057;            /* Paragraphs/Readability */
+    /* Color Palette: Blue for Primary, Neutral for everything else */
+    --color-primary: #1a73e8; /* Google-like Blue */
+    --color-secondary: #202124; /* Dark text/icons */
+    --color-accent: #34a853; /* Green for success/action */
+    --color-background: #ffffff; /* Pure White background */
+    --color-light-background: #f1f3f4; /* Light grey for subtle separation */
+    --color-text: #5f6368; /* Grey for body text */
+    --color-border: #dadce0; /* Subtle border color */
 
     /* Typography */
-    --font-family-headline: 'Roboto', 'Arial', sans-serif;
-    --font-family-body: 'Open Sans', 'Helvetica Neue', sans-serif; 
+    --font-family-sans: 'Roboto', 'Inter', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
 
     /* Spacing & Components */
-    --spacing-xl: 100px; /* Large vertical padding */
-    --spacing-lg: 60px;  /* Section padding */
-    --max-content-width: 1280px;
-    --border-radius-minimal: 4px;
-    /* Precise, low-spread shadow for "floating paper" look */
-    --shadow-precise: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --spacing-default: 8px;
+    --border-radius-default: 8px;
+    --shadow-subtle: 0 1px 3px rgba(60, 64, 67, 0.15); /* Light, professional shadow */
+    --shadow-elevated: 0 4px 12px rgba(60, 64, 67, 0.15);
 }
 
-/* --------------------------------------
-    Base Reset and Typography
--------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -43,166 +31,242 @@
 }
 
 body {
-    font-family: var(--font-family-body);
-    background: var(--color-background-light);
-    color: var(--color-text-body);
-    line-height: 1.6; /* Excellent readability */
-    min-height: 100vh;
+    font-family: var(--font-family-sans);
+    background: var(--color-light-background);
+    color: var(--color-text);
+    line-height: 1.5;
 }
 
 h1, h2, h3 {
-    font-family: var(--font-family-headline);
-    color: var(--color-text-dark);
-    font-weight: 700;
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-regular);
 }
 
+/* Base link styling */
 a {
-    color: var(--color-authority-primary);
+    color: var(--color-primary);
     text-decoration: none;
     transition: color 0.2s ease;
 }
+
 a:hover {
-    color: var(--color-authority-secondary);
+    color: var(--color-accent);
 }
 
-/* --------------------------------------
-    Header (Stark, Structured, Fixed)
--------------------------------------- */
+/* ======================================
+    Header (Clean and minimal)
+====================================== */
 header {
-    background: var(--color-background-white);
-    border-bottom: 1px solid var(--color-background-muted);
-    padding: 15px 40px;
+    background: var(--color-background); /* White header for a clean look */
+    border-bottom: 1px solid var(--color-border);
+    padding: 16px 32px;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Logo and Nav clustered left */
-    gap: 40px;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Very light shadow */
 }
 
 header .logo {
     font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--color-authority-primary);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary); /* Logo in primary color */
 }
 
 header nav a {
-    color: var(--color-text-dark);
-    margin-left: 30px;
-    font-weight: 600;
+    color: var(--color-secondary); /* Dark text for links */
+    margin-left: 24px;
     font-size: 1rem;
-    text-transform: uppercase;
-    transition: all 0.2s ease;
+    font-weight: var(--font-weight-medium);
 }
 
 header nav a:hover {
-    color: var(--color-authority-secondary);
-    border-bottom: 2px solid var(--color-authority-secondary);
-    padding-bottom: 12px;
+    color: var(--color-primary);
 }
 
-/* --------------------------------------
-    Hero Section (Clean & Data-Focused)
--------------------------------------- */
+/* ======================================
+    Hero Section (Focal Point)
+====================================== */
 .hero {
-    min-height: 50vh;
-    padding: var(--spacing-xl) 0;
-    background: var(--color-authority-primary);
-    color: white;
+    height: 70vh; /* Slightly shorter than before */
+    background: var(--color-background); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-}
-
-.hero-content {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 40px;
+    padding: 40px;
 }
 
 .hero h1 {
     font-size: 3.5rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 20px;
-    letter-spacing: -0.5px;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 10px;
+    color: var(--color-secondary);
+    line-height: 1.1;
 }
 
 .hero p {
-    font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 30px;
+    font-size: 1.3rem;
+    margin: 15px 0 30px;
+    max-width: 700px;
+    color: var(--color-text);
 }
 
-/* --------------------------------------
-    Buttons (Corporate & Solid)
--------------------------------------- */
+/* ======================================
+    Buttons (Clean & Elevated)
+====================================== */
 .btn {
     padding: 12px 28px;
-    background: var(--color-authority-secondary);
+    background: var(--color-primary);
     color: white;
-    border-radius: var(--border-radius-minimal);
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    border-radius: var(--border-radius-default);
+    font-weight: var(--font-weight-medium);
     border: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: inline-block;
     cursor: pointer;
+    box-shadow: var(--shadow-subtle);
+    transition: all 0.2s ease;
+    display: inline-block;
 }
 
 .btn:hover {
-    background: #007a82; /* Slightly darker secondary */
+    background: #1565c0; /* Slightly darker shade */
+    box-shadow: 0 2px 8px rgba(60, 64, 67, 0.3); /* More elevated shadow */
     transform: translateY(-1px);
 }
 
 .btn-secondary {
-    background: var(--color-background-white);
-    color: var(--color-authority-primary);
-    border: 1px solid var(--color-authority-primary);
+    background: var(--color-light-background);
+    color: var(--color-primary);
     box-shadow: none;
+    border: 1px solid var(--color-border);
 }
+
 .btn-secondary:hover {
-    background: var(--color-background-light);
+    background: var(--color-border);
+    box-shadow: none;
     transform: none;
-    color: var(--color-authority-secondary);
-    border-color: var(--color-authority-secondary);
 }
 
-/* --------------------------------------
-    Sections (Standardized Content Blocks)
--------------------------------------- */
+/* ======================================
+    Sections
+====================================== */
 section {
-    padding: var(--spacing-lg) 0;
+    padding: 80px 40px; /* Increased padding for more whitespace */
+    background: var(--color-background); /* White background for main content */
+    margin-bottom: 24px; /* Separation from the next section */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05); /* Optional: Use box-shadow to "lift" sections */
 }
 
-.section-content {
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-    padding: 0 40px;
+section:nth-child(even) {
+    background: var(--color-light-background); /* Subtle grey for alternating sections */
+    box-shadow: none;
 }
 
 section h2 {
-    font-size: 2.5rem;
     text-align: center;
+    font-size: 2.2rem;
+    font-weight: var(--font-weight-regular);
     margin-bottom: 40px;
-    position: relative;
-    padding-bottom: 10px;
-}
-section h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--color-authority-secondary);
-    margin: 10px auto 0;
-    border-radius: 1.5px; /* Clean look on the underline */
+    color: var(--color-secondary);
 }
 
-
-/* --------------------------------------
-    Service Cards (Elevated Data Modules)
--------------------------------------- */
-.service-grid {
+/* ======================================
+    Projects Grid (Card Layout)
+====================================== */
+.project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider cards */
+    gap: 30px;
+    margin-top: 40px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-card {
+    background: var(--color-background);
+    padding: 30px;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: var(--shadow-subtle);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-4px);
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+}
+
+.project-card p {
+    margin-bottom: 15px;
+}
+
+.project-btn {
+    display: inline-block;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+}
+
+.project-btn:hover {
+    text-decoration: underline;
+    color: var(--color-accent);
+}
+
+/* ======================================
+    Contact
+====================================== */
+.contact {
+    text-align: center;
+    padding: 60px 40px;
+}
+
+/* ======================================
+    Footer (Simple & Dark)
+====================================== */
+footer {
+    background: var(--color-secondary); /* Dark background */
+    color: var(--color-border); /* Light grey text */
+    text-align: center;
+    padding: 24px;
+    font-size: 0.9rem;
+    margin-top: 0;
+}
+
+/* ======================================
+    Responsive
+====================================== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 12px 20px;
+    }
+
+    header nav {
+        margin-top: 10px;
+    }
+
+    header nav a {
+        display: inline-block;
+        margin: 5px 10px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    section {
+        padding: 50px 20px;
+    }
+}
