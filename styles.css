@@ -9,20 +9,20 @@
     --color-system-secondary: #17a2b8;   /* Calming Teal/Precision */
 
     /* Glass Surface Colors (Using RGBA for transparency) */
-    --color-glass-surface: rgba(255, 255, 255, 0.1); /* Slightly opaque white */
-    --color-glass-border: rgba(255, 255, 255, 0.3);  /* Brighter white for rim light */
+    --color-glass-surface: rgba(255, 255, 255, 0.1); 
+    --color-glass-border: rgba(255, 255, 255, 0.3);  
     
     --color-text-header: #ffffff;
-    --color-text-detail: rgba(255, 255, 255, 0.85); /* Slightly less transparent text */
+    --color-text-detail: rgba(255, 255, 255, 0.85); 
 
     /* Typography */
     --font-family-base: 'Poppins', sans-serif;
 
     /* Components & Effects */
     --border-radius-data-tile: 24px;
-    --shadow-inner-light: inset 0 0 10px rgba(255, 255, 255, 0.2); /* Soft Inner Shine */
-    --shadow-depth: 0 12px 40px 0 rgba(0, 0, 0, 0.4);              /* Outer shadow for distinct lift */
-    --shadow-glow: 0 0 15px rgba(111, 66, 193, 0.6);               /* Primary color glow */
+    --shadow-inner-light: inset 0 0 10px rgba(255, 255, 255, 0.2); 
+    --shadow-depth: 0 12px 40px 0 rgba(0, 0, 0, 0.4);              
+    --shadow-glow: 0 0 15px rgba(111, 66, 193, 0.6);               
 }
 
 * {
@@ -48,6 +48,7 @@ h1, h2, h3 {
 a {
     color: var(--color-system-focus);
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 /* ======================================
@@ -63,35 +64,47 @@ a {
     backdrop-filter: blur(12px) saturate(180%);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
     
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Springy transition */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
 }
 
 /* ======================================
-    Header (Floating Glass Panel)
+    Header (Floating Glass Panel - Logo and Nav on Left)
 ====================================== */
 header {
     /* Applying the mixin */
-    @extend .glass-module;
+    /* Note: In production code, you might use a preprocessor for @extend */
+    background: var(--color-glass-surface);
+    border-radius: var(--border-radius-data-tile);
+    box-shadow: var(--shadow-depth), var(--shadow-inner-light);
+    border: 1px solid var(--color-glass-border);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+
     position: sticky;
-    top: 25px; /* More lift */
+    top: 25px; 
     width: 90%;
     margin: 25px auto 0;
     padding: 16px 40px;
+    
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* --- LOGO AND NAV CLUSTERED LEFT --- */
+    justify-content: flex-start; 
+    gap: 50px; /* Space between logo and nav block */
     z-index: 100;
+    
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 header .logo {
     font-size: 1.8rem;
     color: var(--color-text-header);
-    text-shadow: 0 0 8px var(--color-glass-border); /* Enhanced logo glow */
+    text-shadow: 0 0 8px var(--color-glass-border); 
 }
 
 header nav a {
     color: var(--color-text-detail);
-    margin-left: 30px;
+    margin-left: 20px; /* Space between links */
     font-weight: 500;
 }
 
@@ -101,10 +114,10 @@ header nav a:hover {
 }
 
 /* ======================================
-    Hero Section (Background for the '3D' components)
+    Hero Section 
 ====================================== */
 .hero {
-    min-height: 60vh; /* Reduced height to make space for overlapping cards */
+    min-height: 60vh; 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -121,6 +134,12 @@ header nav a:hover {
     margin-bottom: 20px;
 }
 
+.hero p {
+    font-size: 1.2rem;
+    margin: 15px 0 40px;
+    max-width: 500px;
+}
+
 /* ======================================
     Buttons (Glowing Edge)
 ====================================== */
@@ -130,6 +149,9 @@ header nav a:hover {
     font-weight: 700;
     transition: all 0.4s ease;
     text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
 }
 
 .btn-primary {
@@ -160,7 +182,7 @@ header nav a:hover {
 ====================================== */
 .service-section {
     padding: 100px 10%;
-    margin-top: -120px; /* Pulling the section up for overlap effect */
+    margin-top: -120px; 
     max-width: 1400px;
     margin: -120px auto 0;
     z-index: 50;
@@ -174,9 +196,17 @@ header nav a:hover {
 }
 
 .service-card {
-    /* Applying the mixin */
-    @extend .glass-module;
-    padding: 50px 30px; /* Increased vertical padding for 'squishy' look */
+    /* Applying the mixin values manually for completeness */
+    background: var(--color-glass-surface);
+    border-radius: var(--border-radius-data-tile);
+    box-shadow: var(--shadow-depth), var(--shadow-inner-light);
+    border: 1px solid var(--color-glass-border);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+
+    padding: 50px 30px; 
     text-align: center;
     flex: 1;
     
@@ -186,8 +216,8 @@ header nav a:hover {
 }
 
 .service-card:hover {
-    box-shadow: var(--shadow-depth), 0 0 30px rgba(255, 255, 255, 0.4); /* White highlight on hover */
-    transform: translateY(-15px) scale(1.02); /* More aggressive lift */
+    box-shadow: var(--shadow-depth), 0 0 30px rgba(255, 255, 255, 0.4); 
+    transform: translateY(-15px) scale(1.02); 
 }
 
 .card-icon {
@@ -215,4 +245,36 @@ footer {
     padding: 30px 20px;
     font-size: 0.9rem;
     margin-top: 80px;
+}
+
+/* ======================================
+    Responsive Adjustments
+====================================== */
+@media (max-width: 992px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+        width: 100%;
+        top: 0;
+        border-radius: 0;
+    }
+    header nav {
+        text-align: center;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .service-grid {
+        flex-direction: column;
+        gap: 25px;
+    }
+    .service-section {
+        margin-top: 0;
+        padding: 50px 5%;
+    }
+    .service-card {
+        /* Return to a more conventional mobile shape */
+        border-radius: var(--border-radius-data-tile); 
+    }
 }
