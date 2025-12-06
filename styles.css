@@ -1,28 +1,28 @@
 /* ======================================
-    Global Styles & Variables (3D Glassmorphism)
+    Global Styles & Variables (Deep Spectrum)
 ====================================== */
 :root {
-    /* Color Palette: Deep Base with Transparent Light Elements */
-    --color-system-base: #343a40;       /* Dark, muted background for contrast */
-    --color-system-primary: #6f42c1;     /* Deep Violet/Integrity */
-    --color-system-focus: #fd7e14;       /* Burnt Orange/High Priority */
-    --color-system-secondary: #17a2b8;   /* Calming Teal/Precision */
+    /* Color Palette: Deep Base with Vibrant Accents */
+    --color-system-base: #0a0f18;       /* Deepest Dark Blue / Near-Black */
+    --color-system-primary: #5e35b1;     /* Rich Violet for main brand color */
+    --color-system-focus: #fdd835;       /* Electric Gold/Yellow for critical actions */
+    --color-system-secondary: #00bcd4;   /* Bright Cyan for data highlights */
 
-    /* Glass Surface Colors (Using RGBA for transparency) */
-    --color-glass-surface: rgba(255, 255, 255, 0.1); 
-    --color-glass-border: rgba(255, 255, 255, 0.3);  
+    /* Glass Surface Colors (Less transparent, more solid look) */
+    --color-glass-surface: rgba(40, 48, 64, 0.7); /* Dark, smoky glass background */
+    --color-glass-border: rgba(255, 255, 255, 0.1);  /* Very subtle rim light */
     
     --color-text-header: #ffffff;
-    --color-text-detail: rgba(255, 255, 255, 0.85); 
+    --color-text-detail: #b0bec5; /* Light grey text for better readability on dark */
 
     /* Typography */
     --font-family-base: 'Poppins', sans-serif;
 
     /* Components & Effects */
-    --border-radius-data-tile: 24px;
-    --shadow-inner-light: inset 0 0 10px rgba(255, 255, 255, 0.2); 
-    --shadow-depth: 0 12px 40px 0 rgba(0, 0, 0, 0.4);              
-    --shadow-glow: 0 0 15px rgba(111, 66, 193, 0.6);               
+    --border-radius-data-tile: 16px; /* Slightly sharper corners */
+    --shadow-inner-light: inset 0 0 10px rgba(255, 255, 255, 0.05); /* Very subtle inner shine */
+    --shadow-depth: 0 8px 20px 0 rgba(0, 0, 0, 0.8);              /* Strong, dark shadow for lift */
+    --shadow-glow: 0 0 25px rgba(253, 216, 53, 0.7);               /* Electric glow from focus color */
 }
 
 * {
@@ -33,8 +33,8 @@
 
 body {
     font-family: var(--font-family-base);
-    /* Complex background gradient for the 3D depth to be visible */
-    background: linear-gradient(135deg, var(--color-system-primary) 0%, #442a7c 50%, var(--color-system-base) 100%); 
+    /* 💥 THE DEEPEST BACKGROUND */
+    background: var(--color-system-base);
     color: var(--color-text-detail);
     line-height: 1.6;
     min-height: 100vh;
@@ -60,9 +60,9 @@ a {
     box-shadow: var(--shadow-depth), var(--shadow-inner-light);
     border: 1px solid var(--color-glass-border);
 
-    /* 🔑 THE CORE GLASS EFFECT */
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    /* Slightly less blur to emphasize the dark background */
+    backdrop-filter: blur(8px) saturate(150%);
+    -webkit-backdrop-filter: blur(8px) saturate(150%);
     
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
 }
@@ -71,14 +71,12 @@ a {
     Header (Floating Glass Panel - Logo and Nav on Left)
 ====================================== */
 header {
-    /* Applying the mixin */
-    /* Note: In production code, you might use a preprocessor for @extend */
     background: var(--color-glass-surface);
     border-radius: var(--border-radius-data-tile);
     box-shadow: var(--shadow-depth), var(--shadow-inner-light);
     border: 1px solid var(--color-glass-border);
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    backdrop-filter: blur(8px) saturate(150%);
+    -webkit-backdrop-filter: blur(8px) saturate(150%);
 
     position: sticky;
     top: 25px; 
@@ -88,9 +86,8 @@ header {
     
     display: flex;
     align-items: center;
-    /* --- LOGO AND NAV CLUSTERED LEFT --- */
     justify-content: flex-start; 
-    gap: 50px; /* Space between logo and nav block */
+    gap: 50px; 
     z-index: 100;
     
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -99,12 +96,12 @@ header {
 header .logo {
     font-size: 1.8rem;
     color: var(--color-text-header);
-    text-shadow: 0 0 8px var(--color-glass-border); 
+    text-shadow: 0 0 10px var(--color-system-secondary); /* Cyan glow on logo */
 }
 
 header nav a {
     color: var(--color-text-detail);
-    margin-left: 20px; /* Space between links */
+    margin-left: 20px; 
     font-weight: 500;
 }
 
@@ -132,12 +129,8 @@ header nav a:hover {
     font-size: 3.8rem;
     max-width: 650px;
     margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin: 15px 0 40px;
-    max-width: 500px;
+    /* Neon effect for the main headline */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
 }
 
 /* ======================================
@@ -157,11 +150,11 @@ header nav a:hover {
 .btn-primary {
     background: var(--color-system-focus);
     color: var(--color-system-base);
-    box-shadow: 0 0 15px rgba(253, 126, 20, 0.6);
+    box-shadow: 0 0 15px rgba(253, 216, 53, 0.6);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 0 35px rgba(253, 126, 20, 0.9);
+    box-shadow: var(--shadow-glow); /* Uses the powerful glow effect */
     transform: scale(1.05);
 }
 
@@ -173,12 +166,12 @@ header nav a:hover {
 }
 
 .btn-secondary:hover {
-    background: #5c379e;
+    background: #4a298f;
     transform: translateY(-2px);
 }
 
 /* ======================================
-    Service Cards (The Core 3D Elements)
+    Service Cards (Deep Modules)
 ====================================== */
 .service-section {
     padding: 100px 10%;
@@ -196,34 +189,34 @@ header nav a:hover {
 }
 
 .service-card {
-    /* Applying the mixin values manually for completeness */
+    /* Manual application of mixin values */
     background: var(--color-glass-surface);
     border-radius: var(--border-radius-data-tile);
     box-shadow: var(--shadow-depth), var(--shadow-inner-light);
     border: 1px solid var(--color-glass-border);
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    backdrop-filter: blur(8px) saturate(150%);
+    -webkit-backdrop-filter: blur(8px) saturate(150%);
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
 
     padding: 50px 30px; 
     text-align: center;
     flex: 1;
     
-    /* Simulate the unique organic shape from the image */
-    border-radius: 40% 60% 70% 30% / 50% 50% 50% 50%; 
+    /* Slightly less organic shape */
+    border-radius: 30% 70% 50% 50% / 50% 50% 50% 50%; 
     min-height: 250px;
 }
 
 .service-card:hover {
-    box-shadow: var(--shadow-depth), 0 0 30px rgba(255, 255, 255, 0.4); 
+    /* Intense glow on hover from the secondary color */
+    box-shadow: var(--shadow-depth), 0 0 30px rgba(0, 188, 212, 0.8); 
     transform: translateY(-15px) scale(1.02); 
 }
 
 .card-icon {
     font-size: 3.5rem;
     margin-bottom: 15px;
-    /* Simulate the internal glow/color from the image */
+    /* Cyan glow on icons */
     text-shadow: 0 0 15px var(--color-system-secondary);
     color: var(--color-system-secondary); 
 }
@@ -236,7 +229,7 @@ header nav a:hover {
 }
 
 /* ======================================
-    Footer (Subtle Base)
+    Footer (Deep Base)
 ====================================== */
 footer {
     background: var(--color-system-base);
@@ -245,6 +238,7 @@ footer {
     padding: 30px 20px;
     font-size: 0.9rem;
     margin-top: 80px;
+    border-top: 2px solid var(--color-system-primary); /* Final dividing line */
 }
 
 /* ======================================
@@ -274,7 +268,6 @@ footer {
         padding: 50px 5%;
     }
     .service-card {
-        /* Return to a more conventional mobile shape */
         border-radius: var(--border-radius-data-tile); 
     }
 }
