@@ -1,97 +1,218 @@
 /* ======================================
-    Global Styles & Variables (Analyzed Flow Refinement)
+    Global Styles & Variables (3D Glassmorphism)
 ====================================== */
 :root {
-    /* Color Palette: Trustworthy and Energetic */
+    /* Color Palette: Deep Base with Transparent Light Elements */
+    --color-system-base: #343a40;       /* Dark, muted background for contrast */
     --color-system-primary: #6f42c1;     /* Deep Violet/Integrity */
-    --color-system-focus: #fd7e14;       /* Burnt Orange/Energy for High Priority */
+    --color-system-focus: #fd7e14;       /* Burnt Orange/High Priority */
     --color-system-secondary: #17a2b8;   /* Calming Teal/Precision */
+
+    /* Glass Surface Colors (Using RGBA for transparency) */
+    --color-glass-surface: rgba(255, 255, 255, 0.1); /* Slightly opaque white */
+    --color-glass-border: rgba(255, 255, 255, 0.3);  /* Brighter white for rim light */
     
-    --color-background-base: #fdfdfe;    /* Almost White base */
-    --color-surface-module: #ffffff;     /* Pure White for floating data modules */
-    --color-text-header: #343a40;        /* Dark text for contrast */
-    --color-text-detail: #6c757d;        /* Muted text for body */
+    --color-text-header: #ffffff;
+    --color-text-detail: rgba(255, 255, 255, 0.85); /* Slightly less transparent text */
 
     /* Typography */
     --font-family-base: 'Poppins', sans-serif;
-    --font-weight-regular: 400;
-    --font-weight-medium: 500;
-    --font-weight-bold: 700;
 
-    /* Spacing & Components */
-    --border-radius-data-tile: 20px;       /* Renamed from organic radius */
-    --shadow-process: 0 10px 30px rgba(0, 0, 0, 0.08); /* Renamed from soft shadow */
-    --shadow-elevated-alert: 0 20px 40px rgba(0, 0, 0, 0.15); /* Renamed from deep shadow */
+    /* Components & Effects */
+    --border-radius-data-tile: 24px;
+    --shadow-inner-light: inset 0 0 10px rgba(255, 255, 255, 0.2); /* Soft Inner Shine */
+    --shadow-depth: 0 12px 40px 0 rgba(0, 0, 0, 0.4);              /* Outer shadow for distinct lift */
+    --shadow-glow: 0 0 15px rgba(111, 66, 193, 0.6);               /* Primary color glow */
 }
 
-/* ... (Remaining * { } and body styles remain the same) ... */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-base);
+    /* Complex background gradient for the 3D depth to be visible */
+    background: linear-gradient(135deg, var(--color-system-primary) 0%, #442a7c 50%, var(--color-system-base) 100%); 
+    color: var(--color-text-detail);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    color: var(--color-text-header);
+    font-weight: 700;
+}
+
+a {
+    color: var(--color-system-focus);
+    text-decoration: none;
+}
 
 /* ======================================
-    Header (Security Frame)
+    Glass Component Mixin (The reusable 3D style)
+====================================== */
+.glass-module {
+    background: var(--color-glass-surface);
+    border-radius: var(--border-radius-data-tile);
+    box-shadow: var(--shadow-depth), var(--shadow-inner-light);
+    border: 1px solid var(--color-glass-border);
+
+    /* 🔑 THE CORE GLASS EFFECT */
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Springy transition */
+}
+
+/* ======================================
+    Header (Floating Glass Panel)
 ====================================== */
 header {
-    /* ... (CSS values remain the same) ... */
-    /* Renamed properties for clarity */
-    border-radius: var(--border-radius-data-tile);
-    box-shadow: var(--shadow-process);
+    /* Applying the mixin */
+    @extend .glass-module;
+    position: sticky;
+    top: 25px; /* More lift */
+    width: 90%;
+    margin: 25px auto 0;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
 }
 
 header .logo {
-    /* ... (CSS values remain the same) ... */
-    color: var(--color-system-primary); /* Uses new primary variable */
+    font-size: 1.8rem;
+    color: var(--color-text-header);
+    text-shadow: 0 0 8px var(--color-glass-border); /* Enhanced logo glow */
+}
+
+header nav a {
+    color: var(--color-text-detail);
+    margin-left: 30px;
+    font-weight: 500;
+}
+
+header nav a:hover {
+    color: var(--color-system-focus);
+    text-shadow: 0 0 10px var(--color-system-focus);
 }
 
 /* ======================================
-    Hero Section (Core System Panel)
+    Hero Section (Background for the '3D' components)
 ====================================== */
 .hero {
-    /* ... (CSS values remain the same) ... */
-    background: linear-gradient(135deg, var(--color-system-primary), #8e54e9); /* Uses new primary variable */
-    /* Unique Fluid Shape maintained */
+    min-height: 60vh; /* Reduced height to make space for overlapping cards */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 10%;
+    text-align: left;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3.8rem;
+    max-width: 650px;
+    margin-bottom: 20px;
 }
 
 /* ======================================
-    Buttons (High-Priority Actions)
+    Buttons (Glowing Edge)
 ====================================== */
 .btn {
-    /* ... (CSS values remain the same) ... */
-    background: var(--color-system-focus); /* Uses new focus variable */
-    box-shadow: var(--shadow-elevated-alert);
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
 }
 
-.btn:hover {
-    /* ... (CSS values remain the same) ... */
-    box-shadow: 0 15px 35px rgba(253, 126, 20, 0.5); /* Strong shadow lift */
+.btn-primary {
+    background: var(--color-system-focus);
+    color: var(--color-system-base);
+    box-shadow: 0 0 15px rgba(253, 126, 20, 0.6);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 35px rgba(253, 126, 20, 0.9);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background: var(--color-system-primary);
+    color: white;
+    margin-left: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary:hover {
+    background: #5c379e;
+    transform: translateY(-2px);
 }
 
 /* ======================================
-    Service Cards (Data Tiles)
+    Service Cards (The Core 3D Elements)
 ====================================== */
+.service-section {
+    padding: 100px 10%;
+    margin-top: -120px; /* Pulling the section up for overlap effect */
+    max-width: 1400px;
+    margin: -120px auto 0;
+    z-index: 50;
+    position: relative;
+}
+
+.service-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
 .service-card {
-    background: var(--color-surface-module); /* Uses new surface variable */
-    /* ... (CSS values remain the same) ... */
-    border-radius: var(--border-radius-data-tile); 
-    box-shadow: var(--shadow-process);
+    /* Applying the mixin */
+    @extend .glass-module;
+    padding: 50px 30px; /* Increased vertical padding for 'squishy' look */
+    text-align: center;
+    flex: 1;
+    
+    /* Simulate the unique organic shape from the image */
+    border-radius: 40% 60% 70% 30% / 50% 50% 50% 50%; 
+    min-height: 250px;
 }
 
 .service-card:hover {
-    /* ... (CSS values remain the same) ... */
-    box-shadow: var(--shadow-elevated-alert);
-}
-
-.service-card h3 {
-    color: var(--color-system-primary); /* Uses new primary variable */
+    box-shadow: var(--shadow-depth), 0 0 30px rgba(255, 255, 255, 0.4); /* White highlight on hover */
+    transform: translateY(-15px) scale(1.02); /* More aggressive lift */
 }
 
 .card-icon {
-    color: var(--color-system-focus); /* Uses new focus variable */
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    /* Simulate the internal glow/color from the image */
+    text-shadow: 0 0 15px var(--color-system-secondary);
+    color: var(--color-system-secondary); 
+}
+
+.service-card h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--color-text-header);
 }
 
 /* ======================================
-    Call to Action Section (System Alert)
+    Footer (Subtle Base)
 ====================================== */
-.cta-fluid {
-    background: var(--color-system-focus); /* Uses new focus variable */
-    /* ... (CSS values remain the same) ... */
+footer {
+    background: var(--color-system-base);
+    color: var(--color-text-detail);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.9rem;
+    margin-top: 80px;
 }
-/* ... (Rest of the CSS remains the same, using the new variables) ... */
